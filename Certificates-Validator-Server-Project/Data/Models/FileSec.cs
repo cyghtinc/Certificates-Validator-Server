@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,6 +11,7 @@ namespace Certificates_Validator_Server_Project.Data.Models
         public string filename { get; set; }
         public string md5Hash { get; set; }
         public string sha1Hash { get; set; }
+        [Key]
         public string sha256Hash { get; set; } // current primary key
         public string filepath { get; set; }
         public bool fileSigned { get; set; } // file is signed with cert?

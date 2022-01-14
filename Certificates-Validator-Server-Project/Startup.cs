@@ -1,4 +1,5 @@
 using Certificates_Validator_Server_Project.Data;
+using Certificates_Validator_Server_Project.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +32,10 @@ namespace Certificates_Validator_Server_Project
 
             //configure DBContext with SQL
             services.AddDbContext<AppDBContext>(options => options.UseSqlServer(ConnectionString));
+
+
+            //configure the services
+            services.AddTransient<FileSecService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
