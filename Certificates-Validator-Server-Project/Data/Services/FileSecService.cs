@@ -42,5 +42,15 @@ namespace Certificates_Validator_Server_Project.Data.Services
         public FileSec GetFileSecBySHA256(string sha256) => _context.Files.FirstOrDefault(n => n.sha256Hash == sha256);
 
         public List<FileSec> GetAllFileSec() => _context.Files.ToList();
+
+        public void DeleteRecordByFileSecKey(string fileSecSHA256)
+        {
+            var _fileSec = _context.Files.FirstOrDefault(n => n.sha256Hash == fileSecSHA256);
+            if(_fileSec != null)
+            {
+                _context.Files.Remove(_fileSec);
+                _context.SaveChanges();
+            }
+        }
     }
 }

@@ -46,6 +46,14 @@ namespace Certificates_Validator_Server_Project.Controllers
         }
 
 
+        [HttpGet("delete-filesec-by-sha256/{sha256}")]
+        public IActionResult RemoveFileSecBySHA256(string sha256)
+        {
+            _fileSecService.DeleteRecordByFileSecKey(sha256);
+            return Ok();
+        }
+
+
 
         /*[HttpPost]
         public IActionResult FileSecInCore([FromBody]FileSecVM filesec)
