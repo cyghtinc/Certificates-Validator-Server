@@ -8,6 +8,7 @@ namespace Certificates_Validator_Server_Project.Data.Models
 {
     public class FileSec
     {
+        [Required]
         public string filename { get; set; }
         public string md5Hash { get; set; }
         public string sha1Hash { get; set; }

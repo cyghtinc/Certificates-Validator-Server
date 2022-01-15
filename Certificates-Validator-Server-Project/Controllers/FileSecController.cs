@@ -10,13 +10,23 @@ namespace Certificates_Validator_Server_Project.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class FilesSecController:ControllerBase
+    public class FileSecController:ControllerBase
     {
         public FileSecService _fileSecService;
 
-        public FilesSecController(FileSecService fileSecService)
+        public FileSecController(FileSecService fileSecService)
         {
             _fileSecService = fileSecService;
+        }
+
+
+
+        [HttpPost("add-filesec")]
+        [Produces("application/json")]
+        public IActionResult AddFileSec([FromBody]FileSecVM filesecVM)
+        {
+            _fileSecService.AddFileSec(filesecVM);
+            return Ok();
         }
 
 
@@ -28,7 +38,7 @@ namespace Certificates_Validator_Server_Project.Controllers
         }
 
 
-        [HttpGet("get-filesec-by-sha256.{sha256}")]
+        [HttpGet("get-filesec-by-sha256/{sha256}")]
         public IActionResult GetFileSecBySHA256(string sha256)
         {
             var filesecSpecific = _fileSecService.GetFileSecBySHA256(sha256);
@@ -37,11 +47,11 @@ namespace Certificates_Validator_Server_Project.Controllers
 
 
 
-        [HttpPost]
+        /*[HttpPost]
         public IActionResult FileSecInCore([FromBody]FileSecVM filesec)
         {
 
             return Ok();
-        }
+        }*/
     }
 }

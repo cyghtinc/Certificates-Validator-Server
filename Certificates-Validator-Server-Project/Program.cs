@@ -21,6 +21,7 @@ namespace Certificates_Validator_Server_Project
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+
                 });
     }
 }
